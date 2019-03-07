@@ -1,0 +1,59 @@
+#job {
+    overflow: auto;
+}
+
+table tbody {
+    display: block;
+    /* width: 1800px; */
+    /* height: 80px; */
+    overflow-x: auto;
+}
+
+table .jobName{
+    width: 200px;
+    text-align: center;
+}
+table .codeLines{
+    width: 30px;
+    text-align: center;
+}
+table .workers{
+    width: 30px;
+    text-align: center;
+}
+table .days{
+    width: 30px;
+    text-align: center;
+}
+table .date{
+    width: 20px;
+    text-align: center;
+}
+table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+table tr {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+table tr th {
+    border: 1px solid black;
+    border-right: none;
+    text-overflow: ellipsis;
+}
+
+table tr td {
+    border: 0.5px solid black;
+    border-right: none;
+    text-overflow: ellipsis;
+    border-top: none;
+}
+
+.workdays {
+    background: gold;
+}

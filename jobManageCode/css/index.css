@@ -1,0 +1,126 @@
+h1 {
+  text-align: center;
+}
+table {
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-word;
+  border-right: 0.5px solid black;
+  font-size: 12px;
+  font-weight: normal;
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: center;
+}
+table tr td {
+  border: 0.5px solid black;
+  border-right: none;
+}
+table tr td div {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-top: none;
+  height: 20px;
+  line-height: 20px;
+}
+table tr th {
+  border: 0.5px solid black;
+  border-right: none;
+}
+table tr th div {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-top: none;
+  height: 20px;
+  line-height: 20px;
+}
+#job .tableHeader {
+  height: 66px;
+  line-height: 66px;
+}
+#job #jobBasic {
+  float: left;
+}
+#job #jobProgress {
+  display: block;
+}
+#job .jobName {
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+}
+#job .codeLines {
+  min-width: 70px;
+  max-width: 70px;
+  text-align: center;
+}
+#job .workers {
+  min-width: 30px;
+  max-width: 30px;
+  text-align: center;
+}
+#job .days {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  text-align: center;
+}
+#job .date {
+  min-width: 20px;
+  max-width: 20px;
+  text-align: center;
+}
+#job .workdays {
+  background: gold;
+}
+#job .workdaysFinish {
+  background: skyblue;
+}
+#job #jobProgressTable {
+  display: inline-block;
+  max-width: calc(100% - 380px);
+  overflow-x: auto;
+}
+#workers .tableHeader {
+  height: 66px;
+  line-height: 66px;
+}
+#workers #workerBasic {
+  float: left;
+}
+#workers #workJobs {
+  display: block;
+}
+#workers .workerName {
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+}
+#workers .jobNum {
+  min-width: 50px;
+  max-width: 50px;
+  text-align: center;
+}
+#workers .jobName {
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+}
+#workers .date {
+  min-width: 20px;
+  max-width: 20px;
+  text-align: center;
+}
+#workers .workdays {
+  background: gold;
+}
+#workers .workdaysFinish {
+  background: skyblue;
+}
+#workers #workJobsTable {
+  display: inline-block;
+  max-width: calc(100% - 420px);
+  overflow-x: auto;
+}

@@ -1,0 +1,140 @@
+@cellHeight:20px;
+h1{
+    text-align: center;
+}
+table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+    border-right: 0.5px solid black;
+    font-size: 12px;
+    font-weight: normal;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+
+    tr{
+        td{
+            border: 0.5px solid black;
+            border-right: none;
+
+            div{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                border-top: none;
+                height: @cellHeight;
+                line-height: @cellHeight;
+            }
+        }
+        th{
+            border: 0.5px solid black;
+            border-right: none;
+
+            div{
+                text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                border-top: none;
+                height: @cellHeight;
+                line-height: @cellHeight;
+            }
+        }
+    }
+}
+
+#job{
+    .tableHeader{
+        height: 66px;
+        line-height: 66px;
+    }
+    #jobBasic{
+        float:left;
+    }
+    #jobProgress{
+        display: block;
+    }
+    .jobName{
+        min-width: 200px;
+        max-width: 200px;
+        text-align: center;
+    }
+    .codeLines{
+        min-width: 70px;
+        max-width: 70px;
+        text-align: center;
+    }
+    .workers{
+        min-width: 30px;
+        max-width: 30px;
+        text-align: center;
+    }
+    .days{
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+        text-align: center;
+    }
+    .date{
+        min-width: 20px;
+        max-width: 20px;
+        text-align: center;
+    }
+    .workdays {
+        background: gold;
+    }
+    .workdaysFinish{
+        background: skyblue;
+    }
+    #jobProgressTable {
+        display: inline-block;
+        max-width: calc(~'100% - 380px');
+        overflow-x: auto;
+    }
+} 
+
+#workers{
+    .tableHeader{
+        height: 66px;
+        line-height: 66px;
+    }
+    #workerBasic{
+        float:left;
+    }
+    #workJobs{
+        display: block;
+    }
+    .workerName{
+        min-width: 150px;
+        max-width: 150px;
+        text-align: center;
+    }
+    .jobNum{
+        min-width: 50px;
+        max-width: 50px;
+        text-align: center;
+    }
+    .jobName{
+        min-width: 200px;
+        max-width: 200px;
+        text-align: center;
+    }
+    .date{
+        min-width: 20px;
+        max-width: 20px;
+        text-align: center;
+    }
+    .workdays {
+        background: gold;
+    }
+    .workdaysFinish{
+        background: skyblue;
+    }
+    #workJobsTable {
+        display: inline-block;
+        max-width: calc(~'100% - 420px');
+        overflow-x: auto;
+    }
+}
+

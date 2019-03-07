@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>项目管理小工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/problem.css" />
+    <link rel="stylesheet"  type="text/css" media="screen" href="./lib/bootstrap-table.min.css">
+</head>
+
+<body>
+    <div class="menu">
+        <a href="index.html">任务管理</a>
+        <a href="problem.html">问题单统计</a>
+    </div>
+
+    <input type="file" id="problem-file">
+
+    <div class="stastic">
+        <h1>问题单总数</h1>
+        <div class="processer">
+            <div id="proceserEchart"></div>
+        </div>
+
+        <div class="detail">
+            <span>详情</span>
+            <table id="allProblemTable" class="table"></table>
+        </div>
+    </div>
+
+    <script src="./lib/jquery-3.3.1.js"></script>
+    <script src="./lib/xlsx.core.min.js"></script>
+    <script src="./lib/echarts.min.js"></script>
+    <script src="./lib/bootstrap-table.min.js"></script>
+    <script src="./lib/bootstrap-table-zh-CN.min.js"></script>
+    <script src="./js/readFile.js"></script>
+    <script src="./js/problem.js"></script>
+</body>

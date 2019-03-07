@@ -1,0 +1,18 @@
+.bordered {
+  border: 1px solid #636262;
+}
+.stastic .processer {
+  height: 300px;
+  border: 1px solid #636262;
+}
+.stastic #proceserEchart {
+  height: 300px;
+}
+.detail {
+  border: 1px solid #636262;
+  margin-top: 20px;
+  padding: 20px;
+}
+.detail .table {
+  font-family: Arial, Helvetica, sans-serif;
+}
