@@ -1,20 +1,16 @@
+function checkAllandPerson(id){
+        $("#problemOfPerson").hide();
+        $("#allProblems").show();
+}
 var problems = {
     info: [],
     processState: function (problem) {
-        problem.state = problem.state[0];
+        problem.stateId = problem.state[0];
         return this;
     },
     table: {
         setAllTable: function () {
             $('#allProblemTable').bootstrapTable({
-                // toolbar: "#toolbar",
-                // sidePagination: "true",
-                // striped: true, // 是否显示行间隔色
-                //search : "true",
-                // uniqueId: "ID",
-                // pageSize: "5",
-                // pagination: true, // 是否分页
-                // sortable: true, // 是否启用排序
                 columns: [
                     {
                         field: 'id',
@@ -77,7 +73,7 @@ var processers = {
         }
 
         //按问题级别统计
-        switch (problem.state) {
+        switch (problem.stateId) {
             case '提示': {
                 __info[person].grade.little.push(problem);
                 break;
@@ -100,23 +96,6 @@ var processers = {
         }
         return this;
     },
-    // getStatic: function () {
-    //     var info = this.info;
-    //     for (person in info) {
-    //         var staticInfo = {
-    //             processer: person,
-    //             problems: info[person].all.length,
-    //             state:{
-
-    //             }
-    //         }
-    //         this.static.push(staticInfo);
-    //     }
-    //     this.static.sort(function (a, b) {
-    //         return (b.problems - a.problems);
-    //     });
-    //     return this;
-    // },
     bar: {
         id: echarts.init(document.getElementById('proceserEchart')),
         option: {
@@ -127,9 +106,6 @@ var processers = {
                 bottom: '30px'
             },
             color: ['#00B8D3', '#aeea00', '#00bfa5'],
-            legend: {
-                data:['修改中','已完成','其他']
-            },
             xAxis: {
                 type: 'category',
                 data: [],
@@ -173,23 +149,64 @@ var processers = {
                 var problem = info[person]
                 data.person.push(person);
                 data.problem.push(problem.all.length);
-                data.state.processing.push(problem.state.processing.length);
-                data.state.finshed.push(problem.state.finshed.length);
-                data.state.other.push(problem.state.other.length);
+                // data.state.processing.push(problem.state.processing.length);
+                // data.state.finshed.push(problem.state.finshed.length);
+                // data.state.other.push(problem.state.other.length);
             }
             return data;
         },
         setOption: function () {
             var data = this.getData();
             this.option.xAxis.data = data.person;
-            // this.option.series[0].data = data.problemNum;
-            this.option.series[0].data = data.state.processing;
-            this.option.series[1].data = data.state.finshed;
-            this.option.series[2].data = data.state.other;
+            this.option.series[0].data = data.problem;
+            // this.option.series[0].data = data.state.processing;
+            // this.option.series[1].data = data.state.finshed;
+            // this.option.series[2].data = data.state.other;
             this.id.setOption(this.option);
         }
     }
 }
+
+var personNav = {
+    data: {},
+    navHtml : '',
+    formateString: function (str, person) {
+        return str.replace(/\{#(\w+)#\}/g, person);
+
+    },
+    createItem: function (data) {
+        // 导航样式模板
+        var item = '<span id={#name#} class="personsNav" onclick="personNav.go(this.id)">{#name#}</span>';
+        this.navHtml += this.formateString(item, data);
+        return this;
+    },
+    createNav:function(){
+        var __info = processers.info;
+        for(person in __info){
+            this.createItem(person);
+        }
+
+        $('#personMeun').append(this.navHtml);
+    },
+    go:function(id){
+        $("#allProblems").hide();
+        $("#problemOfPerson").show();
+    }
+};
+
+var echarts = {
+    option:{
+        all:{},
+        person:{
+            state:{},
+            grade:{},
+        }
+    },
+    init:function(){},
+    setOption:function(data){},
+    resizeAll:function(){},
+}
+
 
 var fileColumName = {
     "问题单号": function () {
@@ -233,8 +250,11 @@ $('#problem-file').change(function (e) {
 
         processers.bar.setOption();
         problems.table.setAllTable();
+        personNav.createNav();
+
         console.log(problems);
         console.log(processers);
+        console.log(personNav);
 
     }
 })
