@@ -1,12 +1,39 @@
+.problem_num {
+  font-size: 24px;
+}
 .bordered {
   border: 1px solid #636262;
 }
-.stastic .processer {
-  height: 300px;
-  border: 1px solid #636262;
+.distanceTop {
+  margin-top: 20px;
 }
-.stastic #proceserEchart {
-  height: 300px;
+.block {
+  border: 1px solid #636262;
+  margin-top: 20px;
+  padding: 20px;
+}
+.stastic {
+  border: 1px solid #636262;
+  margin-top: 20px;
+  padding: 20px;
+}
+.stastic .div {
+  box-sizing: border-box;
+}
+.stastic .person_static {
+  width: 100%;
+}
+.stastic .state {
+  display: inline-block;
+  border-right: 1px solid #636262;
+  width: 50%;
+}
+.stastic .grade {
+  width: 45%;
+  float: right;
+}
+.echartBox {
+  height: 260px;
 }
 .detail {
   border: 1px solid #636262;
@@ -15,4 +42,44 @@
 }
 .detail .table {
   font-family: Arial, Helvetica, sans-serif;
+}
+#personMeun {
+  text-align: center;
+}
+#personMeun .meunItem {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 20px;
+  margin-right: 10px;
+  background: #00bcd4b0;
+  color: #ffffff;
+  font-size: 14px;
+}
+.bootstrap-table .fixed-table-container thead tr {
+  background: #efefef;
+}
+.bootstrap-table .fixed-table-container thead tr th div {
+  font-size: 14px;
+}
+.bootstrap-table .fixed-table-container tbody tr {
+  border-bottom: #efefef 1px solid;
+}
+.bootstrap-table .fixed-table-container tbody tr td {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 5px;
+}
+.bootstrap-table .fixed-table-pagination .pagination {
+  padding: 0px;
+  margin: 0px;
+}
+.bootstrap-table .fixed-table-pagination .pagination-detail {
+  padding: 0px;
+  margin: 0px;
+  height: 40px;
+  line-height: 40px;
+  background: #efefef;
+  font-size: 14px;
 }

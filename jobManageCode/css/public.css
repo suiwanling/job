@@ -1,0 +1,69 @@
+* {
+  color: #343E50;
+  font-size: 16px;
+}
+body {
+  padding: 0px;
+  margin: 0px;
+}
+.pageBody {
+  margin: 0px 20px;
+  padding: 20px 0px;
+}
+.header {
+  vertical-align: middle;
+  background: #ffe300;
+}
+.header .lineHeight {
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+.header .title {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 22px;
+  width: 250px;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+.header .logo {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  background-image: url(../img/logo.png);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  margin-left: 20px;
+}
+.header .nav {
+  box-sizing: border-box;
+  float: right;
+  margin-right: 20px;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+.header a {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #343E50;
+  text-decoration: none;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+}
+.header .selectFiled {
+  background: #25201e;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 20px;
+}
+.header .selectFiled .selectInput {
+  color: #fff;
+  font-size: 12px;
+}

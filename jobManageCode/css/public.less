@@ -1,0 +1,76 @@
+* {
+    color: #343E50;
+    font-size: 16px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.pageBody {
+    margin: 0px 20px;
+    padding: 20px 0px;
+}
+
+.header {
+    vertical-align: middle;
+    background: rgb(255, 227, 0);
+    @height: 60px;
+
+    .lineHeight {
+        height: @height;
+        line-height: @height;
+        vertical-align: middle;
+    }
+
+    .title {
+        display: inline-block;
+        margin-left: 6px;
+        font-size: 22px;
+        width: 250px;
+        .lineHeight;
+    }
+
+    .logo {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: middle;
+        background-image: url(../img/logo.png);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        margin-left: 20px;
+    }
+
+    .nav {
+        box-sizing: border-box;
+        float: right;
+        margin-right: 20px;
+        .lineHeight;
+    }
+
+    a {
+        // float: right;
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 16px;
+        // padding: 20px;
+        color: #343E50;
+        text-decoration: none;
+        .lineHeight;
+    }
+
+    .selectFiled {
+        background: #25201e;
+        height: 35px;
+        line-height: 35px;
+        padding-left: 20px;
+
+        .selectInput {
+            color: #fff;
+            font-size: 12px;
+        }
+    }
+}

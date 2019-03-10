@@ -1,21 +1,119 @@
-.bordered{
-    border:  1px solid #636262;
+
+
+.problem_num {
+    font-size: 24px;
 }
-.stastic{
-    .processer{
-        height: 300px;
-        .bordered;
+
+.bordered {
+    border: 1px solid #636262;
+}
+
+.distanceTop {
+    margin-top: 20px;
+}
+
+.block {
+    .bordered;
+    .distanceTop;
+    padding: 20px;
+}
+
+.stastic {
+    .block;
+
+    .div {
+        box-sizing: border-box;
     }
-    #proceserEchart{
-        height: 300px;
+
+    padding: 20px;
+
+    .person_static {
+        width: 100%;
+    }
+
+    .state {
+        display: inline-block;
+        border-right: 1px solid #636262;
+        width: 50%;
+    }
+
+    .grade {
+        // display: inline-block;
+        width: 45%;
+        float: right;
     }
 }
 
-.detail{
-    .bordered;
-    margin-top: 20px;
-    padding: 20px;
-    .table{
+.echartBox {
+    height: 260px;
+}
+
+.detail {
+    .block;
+
+    .table {
         font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+#personMeun {
+    text-align: center;
+
+    .meunItem {
+        display: inline-block;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 20px;
+        margin-right: 10px;
+        background: #00bcd4b0;
+        color: #ffffff;
+        font-size: 14px;
+    }
+}
+
+.bootstrap-table {
+    .fixed-table-container {
+        thead {
+            tr {
+                background: #efefef;
+
+                th {
+                    div {
+                        // color: #ffffff;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                // background: #e5f9ef;
+                border-bottom: #efefef 1px solid;
+
+                td {
+                    font-size: 14px;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 0px 5px;
+                }
+            }
+        }
+
+    }
+    .fixed-table-pagination {
+        .pagination {
+            padding: 0px;
+            margin: 0px;
+        }
+        .pagination-detail{
+            padding: 0px;
+            margin: 0px;
+            height: 40px;
+            line-height: 40px;
+            background: #efefef;
+            font-size: 14px;
+            // color: #fff;
+        }
     }
 }

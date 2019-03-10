@@ -7,46 +7,50 @@
     <title>项目管理小工具</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./lib/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/public.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/problem.css" />
 </head>
 
 <body>
-    <div class="menu">
-        <a href="index.html">任务管理</a>
-        <a href="problem.html">问题单统计</a>
-    </div>
-
-    <input type="file" id="problem-file">
-
-    <div id="personMeun">
-        <span id="menuAll" onclick="checkAllandPerson(this.id)">全部</span>
-    </div>
-
-    <div class="stastic">
-        <div id=allProblems>
-            <h1 id="allNum"></h1>
-            <div class="processer">
-                <div id="proceserEchart"></div>
-            </div>
-
-            <div class="detail">
-                <span>详情</span>
-                <table id="allProblemTable" class="table table-striped"></table>
-            </div>
+    <div class="header">
+        <div class="logo"></div>
+        <div class="title">任务管理工具</div>
+        <div class="nav">
+            <a href="index.html">任务管理</a>
+            <a href="problem.html">问题单统计</a>
         </div>
-        <div id="problemOfPerson" style="display:none">
-            <h1 id="problemNum_ofPerson"></h1>
-            <div class="person_static">
-                <div class="state">
-                    <div id="stateEcharts"></div>
+        <div class="selectFiled">
+            <input type="file" id="problem-file" class="selectInput">
+        </div>
+    </div>
+    <div class="pageBody">
+        <div id="personMeun"></div>
+        <div class="datePage">
+            <div class="problem_num">问题总数: <span class="problem_num" id="problemNum"></span></div>
+
+            <div class="stastic">
+                <div id="allProblems" class="processer ">
+
+                    <span class="title">人员统计</span>
+                    <div id="proceserEchart" class="echartBox"></div>
                 </div>
-                <div class="grade">
-                    <div id="gradeEcharts"></div>
+                <div id="problemOfPerson" style="display:none">
+                    <div class="person_static">
+                        <div class="state">
+                            <span class="title">处理阶段统计</span>
+                            <div id="stateEcharts" class="echartBox"></div>
+                        </div>
+                        <div class="grade">
+                            <span class="title">问题等级统计</span>
+                            <div id="gradeEcharts" class="echartBox"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="detail">
                 <span>详情</span>
-                <table id="personTable" class="table table-striped"></table>
+                <table id="detailTable" class="table table-striped distanceTop"></table>
             </div>
         </div>
     </div>

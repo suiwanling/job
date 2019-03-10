@@ -38,7 +38,7 @@ var jobs = {
         job.workNum = 0;
         if (job.workers) {
             var __workers = job.workers.trim();
-            job.workers = __workers.replace(/(,*$)/g, "");
+            job.workers = __workers.replace(/(,*$)/g, "").split(',');
             // job.workers = __workers.substr(0, __workers.length - 1).split(',');
             job.workNum = job.workers.length;
         }else{
