@@ -87,3 +87,6 @@
   background: #efefef;
   font-size: 14px;
 }
+.bootstrap-table .fixed-table-pagination .page-list {
+  display: none !important;
+}

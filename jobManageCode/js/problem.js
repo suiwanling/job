@@ -310,6 +310,7 @@ var detailTable = {
     init: function () {
         $('#detailTable').bootstrapTable({
             pagination: true,
+            pageSize:1000,
             columns: [{
                 field: 'id',
                 title: '问题单号'
