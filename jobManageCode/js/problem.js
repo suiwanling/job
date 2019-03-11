@@ -3,6 +3,7 @@ function checkedAll(id) {
     $("#allProblems").show();
     detailTable.load(id, true);
     $("#problemNum").text(problems.info.length);
+    $("#personOfProblem").text("");
 }
 var problems = {
     info: [],
