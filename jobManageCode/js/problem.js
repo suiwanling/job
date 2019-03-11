@@ -46,7 +46,7 @@ var processers = {
         }
 
         //按问题级别统计
-        switch (problem.stateId) {
+        switch (problem.grade) {
             case '提示':
                 {
                     __info[person].grade.little.push(problem);
@@ -102,6 +102,7 @@ var personNav = {
         $("#problemOfPerson").show();
 
         $("#problemNum").text(processers.info[id].all.length);
+        $("#personOfProblem").text(id);
 
         echartsClass.state.init('stateEcharts').setOption(id);
         echartsClass.grade.init('gradeEcharts').setOption(id);
@@ -110,7 +111,7 @@ var personNav = {
 };
 
 var echartsClass = {
-    color:['#fcb536', '#4ddfa1', '#00c77d','fcd473'],
+    color: ['#fcb536', '#4ddfa1', '#00c77d', 'fcd473'],
     all: {
         id: echarts.init(document.getElementById('proceserEchart')),
         option: {
@@ -120,18 +121,24 @@ var echartsClass = {
                 top: '50px',
                 bottom: '30px'
             },
-            color: ["#ffe300cc","#00bcd4","#339ca8","#c12e34"],
+            color: ["#ffe300cc", "#00bcd4", "#339ca8", "#c12e34"],
             xAxis: {
                 type: 'category',
                 data: [],
             },
             yAxis: {
                 type: 'value',
-                name:'问题总数'
+                name: '问题总数'
             },
             series: [{
                 name: '问题总数',
                 type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        color: '#343E50',
+                    }
+                },
                 data: [],
             }]
         },
@@ -165,45 +172,55 @@ var echartsClass = {
             }
         }(),
         option: {
-            color: [ "#e6b600","#0098d9","#339ca8","#cda819","#32a487"],
+            color: ["#e6b600", "#0098d9", "#339ca8", "#cda819", "#32a487"],
             series: [{
                 name: '修改阶段',
                 type: 'pie',
                 radius: ['55%', '75%'],
                 center: ['50%', '50%'],
-                label:{
-                    show:true,
-                    color:'#343E50',
+                minAngle: 3,                
+                minAngle: 3,                
+                label: {
+                    normal: {
+                        show: true,
+                        color: '#343E50',
+                        formatter: '{b} : {c}',
+                        padding: 10,
+                    },
                 },
-                lableLine:{
-                    lineStyle:{
-                        color:'#343E50',
-                    }
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color:'rgba(0,0,0,0.3)',
+                        },
+                        length: 10,
+                        length2: 10,
+                    },
                 },
-                data: [],
                 itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    normal: {
+                        borderColor: '#ffffff',
+                        borderWidth: 1
                     }
-                }
+                },
+
+                data: [],
             }]
         },
         getData: function (person) {
             var info = processers.info[person].state;
             return [{
-                    name: '定位修改',
-                    value: info.processing.length
-                },
-                {
-                    name: '完成',
-                    value: info.finished.length
-                },
-                {
-                    name: '其他',
-                    value: info.other.length
-                },
+                name: '定位修改',
+                value: info.processing.length
+            },
+            {
+                name: '完成',
+                value: info.finished.length
+            },
+            {
+                name: '其他',
+                value: info.other.length
+            },
             ]
         },
         setOption: function (person) {
@@ -221,40 +238,57 @@ var echartsClass = {
             }
         }(),
         option: {
-            color: [ "#e6b600","#0098d9","#339ca8","#c12e34"],
+            color: ["#e6b600", "#0098d9", "#339ca8", "#c12e34"],
             series: [{
                 name: '问题级别',
                 type: 'pie',
                 radius: ['55%', '75%'],
                 center: ['50%', '50%'],
-                data: [],
+                minAngle: 3,                
+                label: {
+                    normal: {
+                        show: true,
+                        color: '#343E50',
+                        formatter: '{b} : {c}',
+                        padding: 10,
+                    },
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color:'rgba(0,0,0,0.3)',
+                        },
+                        length: 10,
+                        length2: 10,
+                    },
+                },
                 itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    normal: {
+                        borderColor: '#ffffff',
+                        borderWidth: 1
                     }
-                }
+                },
+                data: [],
             }]
         },
         getData: function (person) {
             var info = processers.info[person].grade;
             return [{
-                    name: '提示',
-                    value: info.little.length
-                },
-                {
-                    name: '一般',
-                    value: info.normal.length
-                },
-                {
-                    name: '严重',
-                    value: info.bad.length
-                },
-                {
-                    name: '致命',
-                    value: info.terrible.length
-                },
+                name: '提示',
+                value: info.little.length
+            },
+            {
+                name: '一般',
+                value: info.normal.length
+            },
+            {
+                name: '严重',
+                value: info.bad.length
+            },
+            {
+                name: '致命',
+                value: info.terrible.length
+            },
             ]
         },
         setOption: function (person) {
@@ -276,34 +310,34 @@ var detailTable = {
         $('#detailTable').bootstrapTable({
             pagination: true,
             columns: [{
-                    field: 'id',
-                    title: '问题单号'
-                },
-                {
-                    field: 'describe',
-                    title: '简述'
-                },
-                {
-                    field: 'processer',
-                    title: '当前处理人'
-                },
-                {
-                    field: 'state',
-                    title: '当前状态'
-                },
-                {
-                    field: 'grade',
-                    title: '严重程度'
-                },
+                field: 'id',
+                title: '问题单号'
+            },
+            {
+                field: 'describe',
+                title: '简述'
+            },
+            {
+                field: 'processer',
+                title: '当前处理人'
+            },
+            {
+                field: 'state',
+                title: '当前状态'
+            },
+            {
+                field: 'grade',
+                title: '严重程度'
+            },
             ],
             data: problems.info,
         });
         return this;
     },
-    load: function(person, isAll){
-        if(isAll){
+    load: function (person, isAll) {
+        if (isAll) {
             $('#detailTable').bootstrapTable('load', problems.info);
-        }else{
+        } else {
             $('#detailTable').bootstrapTable('load', processers.info[person].all);
         }
         return true;
@@ -364,6 +398,6 @@ $('#problem-file').change(function (e) {
     }
 })
 
-$(window).resize(function(){
+$(window).resize(function () {
     echartsClass.resizeAll();
 });

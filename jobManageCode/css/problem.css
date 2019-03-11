@@ -1,5 +1,11 @@
-.problem_num {
+#problemNumDiv {
+  margin-top: 10px;
+}
+#problemNumDiv .problem_num {
   font-size: 24px;
+}
+#problemNumDiv .problem_person {
+  padding-left: 10px;
 }
 .bordered {
   border: 1px solid #636262;
@@ -43,15 +49,13 @@
 .detail .table {
   font-family: Arial, Helvetica, sans-serif;
 }
-#personMeun {
-  text-align: center;
-}
 #personMeun .meunItem {
   display: inline-block;
   height: 34px;
   line-height: 34px;
   padding: 0 20px;
   margin-right: 10px;
+  margin-bottom: 10px;
   background: #00bcd4b0;
   color: #ffffff;
   font-size: 14px;
