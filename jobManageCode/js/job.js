@@ -380,6 +380,8 @@ $('#excel-file').change(function (e) {
         //生成表格
         table.createJobTable().createWorkersTable();
 
+        // e.target.value = '';
+
         console.log(jobs);
         // console.log(workdays);
         // console.log(workers);

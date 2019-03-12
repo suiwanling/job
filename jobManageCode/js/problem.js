@@ -8,7 +8,15 @@ function checkedAll(id) {
 var problems = {
     info: [],
     processState: function (problem) {
-        problem.stateId = problem.state[0];
+        if (problem.state) {
+            problem.stateId = problem.state[0];
+        }
+        return this;
+    },
+    processPerson: function (problem) {
+        if ('6' == problem.stateId) {
+            problem.processer = problem.processer.split(';')[0];
+        }
         return this;
     }
 }
@@ -179,8 +187,8 @@ var echartsClass = {
                 type: 'pie',
                 radius: ['55%', '75%'],
                 center: ['50%', '50%'],
-                minAngle: 3,                
-                minAngle: 3,                
+                minAngle: 3,
+                minAngle: 3,
                 label: {
                     normal: {
                         show: true,
@@ -192,7 +200,7 @@ var echartsClass = {
                 labelLine: {
                     normal: {
                         lineStyle: {
-                            color:'rgba(0,0,0,0.3)',
+                            color: 'rgba(0,0,0,0.3)',
                         },
                         length: 10,
                         length2: 10,
@@ -245,7 +253,7 @@ var echartsClass = {
                 type: 'pie',
                 radius: ['55%', '75%'],
                 center: ['50%', '50%'],
-                minAngle: 3,                
+                minAngle: 3,
                 label: {
                     normal: {
                         show: true,
@@ -257,7 +265,7 @@ var echartsClass = {
                 labelLine: {
                     normal: {
                         lineStyle: {
-                            color:'rgba(0,0,0,0.3)',
+                            color: 'rgba(0,0,0,0.3)',
                         },
                         length: 10,
                         length2: 10,
@@ -310,7 +318,7 @@ var detailTable = {
     init: function () {
         $('#detailTable').bootstrapTable({
             pagination: true,
-            pageSize:1000,
+            pageSize: 1000,
             columns: [{
                 field: 'id',
                 title: '问题单号'
@@ -357,6 +365,9 @@ var fileColumName = {
     "当前责任人": function () {
         return 'processer';
     },
+    "当前处理人": function () {
+        return 'processer';
+    },
     "当前状态": function () {
         return 'state';
     },
@@ -370,7 +381,7 @@ var fileColumName = {
 
 function processData() {
     problems.info.forEach(problem => {
-        problems.processState(problem);
+        problems.processState(problem).processPerson(problem);
         processers.getProcesserAndProblem(problem);
     });
 }
@@ -393,6 +404,8 @@ $('#problem-file').change(function (e) {
         $("#problemNum").text(problems.info.length);
         echartsClass.all.setOption();
         detailTable.init();
+
+        e.target.value = '';
 
         console.log(problems);
         console.log(processers);
