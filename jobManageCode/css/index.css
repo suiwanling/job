@@ -118,6 +118,6 @@ table tr th div {
 }
 #workers #workJobsTable {
   display: inline-block;
-  max-width: calc(100% - 420px);
+  max-width: calc(100% - 470px);
   overflow-x: auto;
 }

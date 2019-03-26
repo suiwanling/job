@@ -1,5 +1,6 @@
 var jobs = {
     info: [],
+    totalCodeLines:0,
     color: {
         colorArr: ['#00B8D3', '#00bfa5', '#aeea00', '#ffd600', '#ffab00', '#00c853',
             '#64dd17', '#388E3C', '#607D8B', '#ff6d00', '#3e2723'
@@ -48,6 +49,10 @@ var jobs = {
     },
     processCodeLines: function (job) {
         job.codeLines = job.codeLinesActual ? job.codeLinesActual : job.codeLinesPlanned;
+        return this;
+    },
+    getTotalCodeLines: function(job){
+        this.totalCodeLines += job.codeLines;
         return this;
     }
 }
@@ -168,9 +173,13 @@ var workers = {
         var workersInfo = this.info;
         jobWorkers.forEach(function (worker) {
             if (!workersInfo[worker]) {
-                workersInfo[worker] = [];
+                workersInfo[worker] = {
+                    jobs:[],
+                    totalCodeLines:0,
+                };
             }
-            workersInfo[worker].push(job);
+            workersInfo[worker].jobs.push(job);
+            workersInfo[worker].totalCodeLines += job.codeLines/(jobWorkers.length);
         }, this)
         return this;
     }
@@ -263,6 +272,7 @@ var table = {
             '<tr>',
             '<th><div class="workerName tableHeader">人员</div></th>',
             '<th><div class="jobNum tableHeader">任务数</div></th>',
+            '<th><div class="jobNum tableHeader">代码量</div></th>',
             '<th><div class="jobName tableHeader">任务</div></th>',
             '</tr>'
         ].join('');
@@ -272,17 +282,19 @@ var table = {
 
     createWorkersBodyRow: function(worker, workerInfo){
         //插入分隔空行
-        var row = '<tr colspan="3"><td><div></div></td></tr>';
+        var row = '<tr colspan="4"><td><div></div></td></tr>';
+        var jobs = workerInfo.jobs;
         row += [
                 '<tr>',
-                '<td rowspan="' + workerInfo.length + '"><div class="workerName">' + worker + '</div></td>',
-                '<td rowspan="' + workerInfo.length + '"><div class="jobNum">' + workerInfo.length + ' </div></td>',
-                '<td><div class="jobName">' + workerInfo[0].name + ' </div></td>',
+                '<td rowspan="' + jobs.length + '"><div class="workerName">' + worker + '</div></td>',
+                '<td rowspan="' + jobs.length + '"><div class="jobNum">' + jobs.length + ' </div></td>',
+                '<td rowspan="' + jobs.length + '"><div class="jobNum">' + workerInfo.totalCodeLines + 'K </div></td>',
+                '<td><div class="jobName">' + jobs[0].name + ' </div></td>',
                 '</tr>'
             ].join('');
 
-        for(var i = 1; i < workerInfo.length; i++){
-            row += '<tr><td><div class="jobName">' + workerInfo[i].name + ' </div></td></tr>';
+        for(var i = 1; i < jobs.length; i++){
+            row += '<tr><td><div class="jobName">' + jobs[i].name + ' </div></td></tr>';
         }
         return row;
     },
@@ -293,9 +305,9 @@ var table = {
         var workerDateTable = this.createDateHeader();
         var daysNum =  workdays.days.daysMs.length;
         for (worker in workersInfo){
-            var __info = workersInfo[worker];
+            var __info = workersInfo[worker].jobs;
             workerDateTable += '<tr colspan="' +daysNum + '"><td style="border-left:none" ><div></div></td></tr>'
-            workerBasicTable += this.createWorkersBodyRow(worker, __info);
+            workerBasicTable += this.createWorkersBodyRow(worker, workersInfo[worker]);
             __info.forEach(function (job) {
                 workerDateTable += this.createDateBodyRow(job);
             }, this);
@@ -311,7 +323,7 @@ function processJobsDateWorkers() {
     jobsInfo.forEach(function (job) {
 
         //处理项目时间  //分配项目颜色 //处理人员信息
-        jobs.processTime(job).processWorks(job).setJobColor(job).processCodeLines(job);
+        jobs.processTime(job).processWorks(job).setJobColor(job).processCodeLines(job).getTotalCodeLines(job);
 
         //获取项目整体开始时间和结束时间
         workdays.getStartTime(job).getEndTime(job);
@@ -380,11 +392,14 @@ $('#excel-file').change(function (e) {
         //生成表格
         table.createJobTable().createWorkersTable();
 
+        //生成综合总计数据
+        $('#totalJobs').html('任务总数：' + jobs.info.length + '    总代码量：' + jobs.totalCodeLines);
+
         // e.target.value = '';
 
         console.log(jobs);
         // console.log(workdays);
-        // console.log(workers);
+        console.log(workers);
 
     }
 })
