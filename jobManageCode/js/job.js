@@ -288,7 +288,7 @@ var table = {
                 '<tr>',
                 '<td rowspan="' + jobs.length + '"><div class="workerName">' + worker + '</div></td>',
                 '<td rowspan="' + jobs.length + '"><div class="jobNum">' + jobs.length + ' </div></td>',
-                '<td rowspan="' + jobs.length + '"><div class="jobNum">' + workerInfo.totalCodeLines + 'K </div></td>',
+                '<td rowspan="' + jobs.length + '"><div class="jobNum">' + workerInfo.totalCodeLines.toFixed(1) + 'K </div></td>',
                 '<td><div class="jobName">' + jobs[0].name + ' </div></td>',
                 '</tr>'
             ].join('');
@@ -393,7 +393,7 @@ $('#excel-file').change(function (e) {
         table.createJobTable().createWorkersTable();
 
         //生成综合总计数据
-        $('#totalJobs').html('任务总数：' + jobs.info.length + '    总代码量：' + jobs.totalCodeLines);
+        $('#totalJobs').html('任务总数：' + jobs.info.length + '    总代码量：' + jobs.totalCodeLines.toFixed(1) + 'K');
 
         // e.target.value = '';
 
