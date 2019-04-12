@@ -122,7 +122,14 @@ var personNav = {
 var echartsClass = {
     color: ['#fcb536', '#4ddfa1', '#00c77d', 'fcd473'],
     all: {
-        id: echarts.init(document.getElementById('proceserEchart')),
+        // id: echarts.init(document.getElementById('proceserEchart')),
+        id: 0,
+        init: function (domId) {
+            return function (domId) {
+                this.id = echarts.init(document.getElementById(domId));
+                return this;
+            }
+        }(),
         option: {
             grid: {
                 left: '60px',
@@ -318,26 +325,35 @@ var detailTable = {
     init: function () {
         $('#detailTable').bootstrapTable({
             pagination: true,
-            pageSize: 1000,
+            pageSize: 10,
+            pageList: [5, 10, 25, 50, 100],
+            search: true,
+            searchAlign: "left",
+            // searchText:'搜索',
             columns: [{
                 field: 'id',
-                title: '问题单号'
+                title: '问题单号',
+                sortable: 'true'
             },
             {
                 field: 'describe',
-                title: '简述'
+                title: '简述',
+                sortable: 'true'
             },
             {
                 field: 'processer',
-                title: '当前处理人'
+                title: '当前处理人',
+                sortable: 'true'
             },
             {
                 field: 'state',
-                title: '当前状态'
+                title: '当前状态',
+                sortable: 'true',
             },
             {
                 field: 'grade',
-                title: '严重程度'
+                title: '严重程度',
+                sortable: 'true'
             },
             ],
             data: problems.info,
@@ -402,7 +418,7 @@ $('#problem-file').change(function (e) {
 
         // 生成全部问题统计柱状图 全部问题表格数据
         $("#problemNum").text(problems.info.length);
-        echartsClass.all.setOption();
+        echartsClass.all.init('proceserEchart').setOption();
         detailTable.init();
 
         e.target.value = '';
